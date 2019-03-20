@@ -36,7 +36,7 @@ t1 = BashOperator(
 
 task = BashOperator(
         task_id='update_reviews',
-        bash_command='python' + pipeline_dir + '/src/update_reviews.py',
+        bash_command='python ' + pipeline_dir + '/src/update_reviews.py',
         dag=dag
         )
 t1 >> task

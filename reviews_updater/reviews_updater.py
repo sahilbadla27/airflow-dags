@@ -19,8 +19,8 @@ pipeline_dir = os.environ["AIRFLOW_DAGS_HOME"] + '/reviews_updater'
 s3_config_path = os.environ["S3_DAGS_CONFIG_HOME"] + '/reviews_updater'
 config_path = pipeline_dir + '/config'
 os.environ["AH_CONFIGURATION_PATH"] = config_path
-nexus_user= os.environ["NEXUS_USER"]
-nexus_password= os.environ["NEXUS_PASSWORD"]
+nexus_user= 'ci'
+nexus_password= 'CSKNLycd25LfSV5z'
 
 
 dag = DAG(

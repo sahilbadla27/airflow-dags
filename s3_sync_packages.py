@@ -34,6 +34,11 @@ t2 = BashOperator(
     params={'loc': '~/.aws/config'},
     dag=dag)
 
+aws_task = BashOperator(
+    task_id='aws_install',
+    bash_command='pip install --upgrade --user awscli && export PATH=~/.local/bin:$PATH',
+    dag=dag)
+
 sync_task = BashOperator(
     task_id='run_s3_sync',
     bash_command='mkdir -p {{ params.source }} && aws s3 sync {{ params.source }} {{ params.dest }}',
@@ -55,4 +60,4 @@ clean_task = BashOperator(
     dag=dag
 )
 
-t1 >> t2 >> sync_task >> untar_task >> clean_task
+t1 >> t2 >> aws_task >> sync_task >> untar_task >> clean_task

@@ -24,7 +24,7 @@ nexus_password= 'CSKNLycd25LfSV5z'
 
 
 dag = DAG(
-        'reviews-updater1',
+        'reviews_updater_old',
         default_args=default_args,
         schedule_interval='@daily'
         )

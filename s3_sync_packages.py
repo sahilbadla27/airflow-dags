@@ -60,4 +60,4 @@ clean_task = BashOperator(
     dag=dag
 )
 
-t1 >> t2 >> aws_task >> sync_task >> untar_task >> clean_task
+t1 >> t2 >> sync_task >> untar_task >> clean_task

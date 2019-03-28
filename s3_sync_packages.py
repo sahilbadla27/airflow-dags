@@ -28,12 +28,6 @@ t1 = BashOperator(
     bash_command='export AWS_PROFILE=stellarole ',
     dag=dag)
 
-t2 = BashOperator(
-    task_id='aws_config',
-    bash_command='export AWS_CONFIG_FILE={{ params.loc }}',
-    params={'loc': '~/.aws/config'},
-    dag=dag)
-
 sync_task = BashOperator(
     task_id='run_s3_sync',
     bash_command='mkdir -p {{ params.source }} && aws s3 sync {{ params.source }} {{ params.dest }}',
@@ -55,4 +49,4 @@ clean_task = BashOperator(
     dag=dag
 )
 
-t1 >> t2 >> sync_task >> untar_task >> clean_task
+t1 >> sync_task >> untar_task >> clean_task
